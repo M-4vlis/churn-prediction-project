@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Dados
+data/processed/
+*.csv
+
+# Ambientes virtuais e arquivos sensíveis
+venv/
+.env
+.DS_Store
