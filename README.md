@@ -22,6 +22,7 @@ churn-prediction-project/
 ├── requirements.txt
 ├── README.md
 └── cancelamentos.csv      # Dataset original
+```
 
 📊 Dataset
 
