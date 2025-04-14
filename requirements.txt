@@ -2,6 +2,8 @@ pandas
 numpy
 matplotlib
 seaborn
+plotly
+nbformat
 scikit-learn
 xgboost
 imblearn
