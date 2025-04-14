@@ -24,7 +24,7 @@ churn-prediction-project/
 └── cancelamentos.csv      # Dataset original
 ```
 
-📊 Dataset
+Dataset
 
 O dataset contém informações de 881.666 clientes, com variáveis relacionadas a:
 
@@ -40,10 +40,10 @@ O dataset contém informações de 881.666 clientes, com variáveis relacionadas
 
     Coluna alvo: cancelou (1 = cancelou, 0 = manteve)
 
-🔍 Análise Exploratória (EDA)
+Análise Exploratória (EDA)
 
 A EDA foi realizada no notebook [1_EDA.ipynb](1_EDA.ipynb), e os principais insights foram organizados no relatório [docs/EDA.md](docs/EDA.md).
-🔥 Highlights:
+ Highlights:
 
     100% dos clientes com assinatura mensal cancelam
 
@@ -55,7 +55,7 @@ A EDA foi realizada no notebook [1_EDA.ipynb](1_EDA.ipynb), e os principais insi
 
     O público feminino apresenta maior tendência ao churn
 
-🛠️ Tecnologias Utilizadas
+ Tecnologias Utilizadas
 
     Python 3.12.7
 
@@ -67,7 +67,7 @@ A EDA foi realizada no notebook [1_EDA.ipynb](1_EDA.ipynb), e os principais insi
 
     Git/GitHub
 
-💡 Próximos Passos
+ Próximos Passos
 
 Feature Engineering (tratamento, encoding, padronização)
 
@@ -77,8 +77,8 @@ Métricas e avaliação
 
     Deploy e dashboard com Streamlit ou Flask
 
-👨‍💻 Autor
+ Autor
 
 Mario Pereira | Cientista de Dados em formação
-💬 Sempre buscando soluções fora da caixa e insights que transformam números em ação.
-📫 Contato: [E-mail](mailto:omario.pereira96@gmail.com) • [LinkedIn](https://www.linkedin.com/in/omario-silva96) • [GitHub](https://github.com/M-4vlis)
+Sempre buscando soluções fora da caixa e insights que transformam números em ação.
+Contato: [E-mail](mailto:omario.pereira96@gmail.com) • [LinkedIn](https://www.linkedin.com/in/omario-silva96) • [GitHub](https://github.com/M-4vlis)
