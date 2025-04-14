@@ -80,4 +80,4 @@ Métricas e avaliação
 
 Mario Pereira | Cientista de Dados em formação
 💬 Sempre buscando soluções fora da caixa e insights que transformam números em ação.
-📫 Contato: [[E-mail](omario.pereira96@gmail.com)] • [LinkedIn](www.linkedin.com/in/omario-silva96) • [GitHub](https://github.com/M-4vlis)
+📫 Contato: [E-mail](mailto:omario.pereira96@gmail.com) • [LinkedIn](https://www.linkedin.com/in/omario-silva96) • [GitHub](https://github.com/M-4vlis)
