@@ -42,7 +42,7 @@ O dataset contém informações de 881.666 clientes, com variáveis relacionadas
 
 🔍 Análise Exploratória (EDA)
 
-A EDA foi realizada no notebook 1_EDA.ipynb, e os principais insights foram organizados no relatório docs/EDA.md.
+A EDA foi realizada no notebook [1_EDA.ipynb](1_EDA.ipynb), e os principais insights foram organizados no relatório [docs/EDA.md](docs/EDA.md).
 🔥 Highlights:
 
     100% dos clientes com assinatura mensal cancelam
