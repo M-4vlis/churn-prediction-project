@@ -71,16 +71,55 @@ A EDA foi realizada no notebook [1_EDA.ipynb](1_EDA.ipynb), e os principais insi
 
 Feature Engineering (tratamento, encoding, padronização)
 
-Modelagem preditiva (classificação)
+## Modelagem Preditiva
 
-Métricas e avaliação
+A modelagem foi feita em duas abordagens distintas:
 
-    Deploy e dashboard com Streamlit ou Flask
+### Abordagem A — Dataset Original
+Utilizamos os dados como estavam, com alta proporção de clientes cancelando (≈70%). Isso nos permite observar o comportamento dos modelos quando o churn é dominante.
 
- Autor
+### Abordagem B — Dataset Simulado com Churn ≈ 30%
+Criamos uma versão mais realista da base, simulando uma situação de mercado onde a maioria dos clientes permanece. Essa abordagem visa avaliar o desempenho dos modelos em cenários mais alinhados com a realidade de negócios.
+
+> ⚠️ Nota: A base original apresenta uma distribuição invertida (mais clientes cancelam do que permanecem). Veja como isso foi tratado no [relatório de EDA](docs/EDA.md#consideração-estratégica-distribuição-do-churn).
+
+Ambas as versões foram testadas com os seguintes modelos:
+- Regressão Logística
+- Árvore de Decisão
+- Random Forest
+- Gradient Boosting
+- SVM
+
+As métricas avaliadas foram:
+- Acurácia
+- F1-score
+- ROC AUC
+- Matriz de Confusão
+
+---
+
+### Observações sobre performance
+
+Durante o treinamento, foi observado que o modelo SVM (`SVC` com `probability=True`) apresentou alto custo computacional, levando várias horas para concluir o processo. 
+
+Essa decisão de manter o modelo mesmo com custo elevado reflete uma escolha consciente de simular um cenário de produção real, onde diferentes modelos são avaliados com profundidade para obter o melhor desempenho possível — mesmo que isso demande mais recursos de processamento.
+
+---
+
+### Automação e Modularização
+
+Foi criado um script `src/train.py` para permitir o reuso e treinamento automático dos modelos, fora do ambiente Jupyter. Isso permite escalar o processo de forma eficiente, e também integra com pipelines futuros de deploy.
+
+Para executar:
+
+```bash
+python src/train.py
+```
+
+### Autor
 
 Mario Pereira | Cientista de Dados em formação
 
 Sempre buscando soluções fora da caixa e insights que transformam números em ação.
 
-Contato: [E-mail](mailto:omario.pereira96@gmail.com) • [LinkedIn](https://www.linkedin.com/in/omario-silva96) • [GitHub](https://github.com/M-4vlis)
+Contatos: [E-mail](mailto:omario.pereira96@gmail.com) • [LinkedIn](https://www.linkedin.com/in/omario-silva96) • [GitHub](https://github.com/M-4vlis)

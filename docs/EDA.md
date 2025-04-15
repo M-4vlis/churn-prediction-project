@@ -1,85 +1,100 @@
-
----
-
-### `docs/EDA.md` — Relatório de Insights do EDA
-
-```markdown
 # 📊 Relatório de Análise Exploratória (EDA)
 
-Este relatório resume os principais insights extraídos a partir da análise exploratória do dataset `cancelamentos.csv`, com o objetivo de identificar padrões de comportamento relacionados ao cancelamento de clientes.
+Este relatório resume os principais insights extraídos do dataset `cancelamentos.csv`, com o objetivo de identificar os principais padrões de comportamento que levam ao cancelamento de clientes.
+
+Todos os gráficos foram gerados e estão disponíveis na pasta [`outputs/plots/`](../outputs/plots/).
 
 ---
 
-## 🔍 Visão Geral
+## 📋 Estrutura do Dataset
 
-- Total de registros: 881.666
-- Coluna alvo: `cancelou`
-- Dados ausentes removidos com `.dropna()`
-
----
-
-## 💥 Principais Insights
-
-### 1. 🚺 Alta taxa de cancelamento entre mulheres
-
-- O público feminino apresenta uma taxa de churn visivelmente maior.
-- Pode indicar insatisfação ou desajuste com o produto/serviço oferecido.
-
-**Recomendação:** Investigar feedbacks e criar segmentações específicas para o público feminino.
+- **Total de registros:** 881.666
+- **Colunas:** 12
+- **Variável alvo:** `cancelou` (1 = cancelou, 0 = manteve)
+- **Fonte:** Kaggle - Base de clientes fictícia com características comportamentais, financeiras e contratuais.
 
 ---
 
-### 2. 🗓️ Assinatura mensal = Churn certo
+## 🔍 Insights Visuais
 
-- 100% dos clientes com **assinatura do tipo mensal** cancelam.
-- Forte indício de que o modelo de pagamento mensal não oferece fidelização.
+### 1. 📦 Assinatura vs Cancelamento
 
-**Recomendação:** Reavaliar a atratividade das assinaturas mensais ou oferecer upgrades automáticos.
+Clientes com assinatura mensal apresentam taxa de **100% de cancelamento**.
 
----
-
-### 3. 👶👴 Faixa etária crítica
-
-- Até 20 anos: ~50% de cancelamento
-- Acima de 50 anos: 100% de cancelamento
-
-**Recomendação:** Oferecer experiência personalizada por faixa etária. Verificar usabilidade e canais de comunicação.
+![Assinatura vs Cancelamento](../outputs/plots/assinatura_vs_cancelamento.png)
 
 ---
 
-### 4. ⏰ Atrasos acima de 20 dias = cancelamento total
+### 2. 👩 Sexo vs Cancelamento
 
-- Todos os clientes com mais de 20 dias de atraso nos pagamentos cancelaram.
+Mulheres apresentaram **maior taxa de cancelamento** em relação aos homens.
 
-**Recomendação:** Ações preventivas e notificações antes desse limite.
-
----
-
-### 5. ☎️ Call Center como alerta de risco
-
-- Clientes que ligam mais de 4 vezes para o call center sempre cancelam.
-
-**Recomendação:** Criar score de risco com base no número de chamadas. Investigar tempo médio de resolução.
+![Sexo vs Cancelamento](../outputs/plots/sexo_vs_cancelamento.png)
 
 ---
 
-## 📈 Visualizações Utilizadas
+### 3. 👶 Idade vs Cancelamento
 
-- Histogramas e boxplots para variáveis contínuas
-- Gráficos de barras segmentados por `cancelou`
-- Heatmap de correlação
-- Análises condicionais com `.groupby()` e `.mean()`
+- Clientes até 20 anos: ~50% de cancelamento  
+- Acima de 50 anos: **100% de cancelamento**  
+- Adultos entre 21 e 50 têm taxas mais equilibradas.
+
+![Idade vs Cancelamento](../outputs/plots/idade_vs_cancelamento.png)
 
 ---
 
-## 🧠 Conclusão
+### 4. 📞 Ligações para o Call Center
 
-A análise revelou padrões claros de comportamento que podem ser utilizados para:
+Clientes que ligam mais de 4 vezes para o call center **sempre cancelam**.
 
-- Criar políticas de retenção personalizadas
-- Ajustar planos e modelos de assinatura
-- Antecipar o risco de churn com base em variáveis-chave
+![Call Center vs Cancelamento](../outputs/plots/callcenter_vs_cancelamento.png)
 
-Esses insights servirão de base para a próxima etapa: **modelagem preditiva**.
+---
+
+### 5. ⏳ Dias de Atraso
+
+100% dos clientes com **mais de 20 dias de atraso** cancelaram.
+
+![Dias de Atraso vs Cancelamento](../outputs/plots/dias_atraso_vs_cancelamento.png)
+
+---
+
+## ✅ Conclusões
+
+Os dados indicam padrões claros de churn:
+
+- **Planos mensais** são altamente instáveis.
+- **Excesso de ligações** ao suporte técnico é um forte preditor de cancelamento.
+- **Atrasos** são praticamente sinônimo de churn.
+- **Sexo feminino** e **faixas etárias extremas** devem ser analisados com cuidado na comunicação e retenção.
+
+---
+
+## Consideração Estratégica: Distribuição do Churn
+
+Durante a análise, percebemos que a base original possui uma distribuição **incomum** para problemas de churn:
+
+- **Churn (cancelou):** ~56%
+- **Não-Churn:** ~44%
+
+Isso é o **inverso** do que acontece na maioria dos negócios reais, onde o cancelamento geralmente é a minoria.
+
+### O que foi feito?
+
+Para simular uma situação mais próxima da realidade, criamos uma **base simulada** com aproximadamente:
+
+- **30% churn**
+- **70% não-churn**
+
+### Como foi feito?
+
+Mantivemos todos os clientes que **não cancelaram**, e fizemos uma amostragem dos clientes que **cancelaram**, até atingir essa proporção. Esse novo dataset será utilizado na segunda etapa do projeto (modelagem).
+
+Com isso, conseguimos comparar o desempenho dos modelos em dois cenários:
+
+- **Base original:** onde churn é maioria.
+- **Base simulada:** onde churn é minoria (cenário realista).
+
+Esse tipo de estratégia é essencial para garantir que o modelo seja **robusto e aplicável em ambientes reais de negócio**.
 
 ---
