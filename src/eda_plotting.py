@@ -8,11 +8,11 @@ def save_plot(fig, filename):
     fig.savefig(f"outputs/plots/{filename}", bbox_inches="tight")
     plt.close(fig)
 
-def plot_assinatura_vs_cancelamento(df):
+def plot_duracao_contrato(df):
     fig, ax = plt.subplots()
-    sns.countplot(data=df, x="assinatura", hue="cancelou", ax=ax)
-    ax.set_title("Assinatura vs Cancelamento")
-    save_plot(fig, "assinatura_vs_cancelamento.png")
+    sns.countplot(data=df, x="duracao_contrato", hue="cancelou", ax=ax)
+    ax.set_title("Duração do Contrato vs Cancelamento")
+    save_plot(fig, "duracao_contrato.png")
 
 def plot_sexo_vs_cancelamento(df):
     fig, ax = plt.subplots()
@@ -39,7 +39,7 @@ def plot_dias_atraso_vs_cancelamento(df):
     save_plot(fig, "dias_atraso_vs_cancelamento.png")
 
 def gerar_todos_os_graficos(df):
-    plot_assinatura_vs_cancelamento(df)
+    plot_duracao_contrato(df)
     plot_sexo_vs_cancelamento(df)
     plot_idade_vs_cancelamento(df)
     plot_callcenter_vs_cancelamento(df)
