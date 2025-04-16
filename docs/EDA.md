@@ -98,3 +98,14 @@ Com isso, conseguimos comparar o desempenho dos modelos em dois cenários:
 Esse tipo de estratégia é essencial para garantir que o modelo seja **robusto e aplicável em ambientes reais de negócio**.
 
 ---
+
+## 🧠 Próximos passos após o EDA
+
+Com base nos insights acima, seguimos para:
+
+- Criação de variáveis (feature engineering)
+- Balanceamento da base com SMOTE
+- Treinamento de múltiplos modelos
+- Escolha do modelo final para deploy
+
+Confira a próxima etapa no notebook [2_Modelagem.ipynb](../notebooks/2_Modelagem.ipynb)
