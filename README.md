@@ -24,7 +24,7 @@ churn-prediction-project/
 └── cancelamentos.csv      # Dataset original
 ```
 
-Dataset
+## 📁 Dataset
 
 O dataset contém informações de 881.666 clientes, com variáveis relacionadas a:
 
@@ -40,7 +40,7 @@ O dataset contém informações de 881.666 clientes, com variáveis relacionadas
 
     Coluna alvo: cancelou (1 = cancelou, 0 = manteve)
 
-Análise Exploratória (EDA)
+## Análise Exploratória (EDA)
 
 A EDA foi realizada no notebook [1_EDA.ipynb](1_EDA.ipynb), e os principais insights foram organizados no relatório [docs/EDA.md](docs/EDA.md).
  Highlights:
@@ -55,21 +55,16 @@ A EDA foi realizada no notebook [1_EDA.ipynb](1_EDA.ipynb), e os principais insi
 
     O público feminino apresenta maior tendência ao churn
 
- Tecnologias Utilizadas
+## 🧰 Tecnologias Utilizadas
 
-    Python 3.12.7
+- Python 3.12.7
+- Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, Imbalanced-learn
+- Jupyter Notebooks
+- Streamlit
+- Conda (ambiente virtual)
+- Git + GitHub
 
-    Pandas, NumPy, Matplotlib, Seaborn
-
-    Jupyter Notebooks
-
-    Conda (ambiente virtual)
-
-    Git/GitHub
-
- Próximos Passos
-
-Feature Engineering (tratamento, encoding, padronização)
+✅ Feature Engineering realizada com encoding, balanceamento e padronização dos dados
 
 ## Modelagem Preditiva
 
@@ -100,9 +95,7 @@ As métricas avaliadas foram:
 
 ### Observações sobre performance
 
-Durante o treinamento, foi observado que o modelo SVM (`SVC` com `probability=True`) apresentou alto custo computacional, levando várias horas para concluir o processo. 
-
-Essa decisão de manter o modelo mesmo com custo elevado reflete uma escolha consciente de simular um cenário de produção real, onde diferentes modelos são avaliados com profundidade para obter o melhor desempenho possível — mesmo que isso demande mais recursos de processamento.
+> ⚡ Devido ao alto custo computacional do `SVC` tradicional, optamos por utilizar o `SGDClassifier` com função de perda `hinge`, que implementa um classificador linear semelhante ao SVM, porém muito mais eficiente em grandes volumes de dados.
 
 ---
 
@@ -115,6 +108,55 @@ Para executar:
 ```bash
 python src/train.py
 ```
+
+### 🏆 Modelo Final
+
+Após testar 5 algoritmos em duas abordagens de dataset (base original e base simulada com 30% de churn), o modelo escolhido para deploy foi:
+
+**Random Forest Classifier**, com performance:
+
+- F1-score: 0.999 (base simulada)
+- Acurácia: 0.9995
+- ROC AUC: 1.000
+
+Além da alta performance, o modelo foi escolhido por sua robustez, estabilidade, e boa interpretabilidade via análise de importância de variáveis.
+
+O modelo final foi treinado com a base **balanceada via SMOTE** e **ajustada para refletir uma distribuição de churn mais próxima do mercado real**.
+
+## 🖥️ Deploy Interativo com Streamlit
+
+Para facilitar a visualização dos resultados e permitir a utilização prática do modelo, foi desenvolvido um aplicativo interativo com **Streamlit**.  
+
+O app permite:
+- Entrada manual de dados de um cliente
+- Upload de um arquivo CSV com múltiplos clientes
+- Visualização das previsões e probabilidades
+- Download do resultado em CSV
+
+### ▶️ Como executar o app
+
+1. Instale os pacotes:
+
+```bash
+pip install -r requirements.txt
+```
+
+2. Rode o app com:
+
+```bash
+streamlit run app/streamlit_app.py
+```
+
+3. O navegador será aberto automaticamente em `http://localhost:8501`
+
+---
+
+### 📎 Exemplo de entrada (CSV):
+
+```csv
+sexo,tempo_como_cliente,frequencia_uso,ligacoes_callcenter,dias_atraso,total_gasto,meses_ultima_interacao,idade,assinatura_Standard,assinatura_Premium,duracao_contrato_Monthly,duracao_contrato_Quarterly
+1,15,12,2,3,1230.50,5,35,1,0,0,1
+0,30,8,5,21,760.00,8,58,0,1,1,0
 
 ### Autor
 
