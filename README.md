@@ -157,6 +157,7 @@ streamlit run app/streamlit_app.py
 sexo,tempo_como_cliente,frequencia_uso,ligacoes_callcenter,dias_atraso,total_gasto,meses_ultima_interacao,idade,assinatura_Standard,assinatura_Premium,duracao_contrato_Monthly,duracao_contrato_Quarterly
 1,15,12,2,3,1230.50,5,35,1,0,0,1
 0,30,8,5,21,760.00,8,58,0,1,1,0
+```
 
 ### Autor
 
