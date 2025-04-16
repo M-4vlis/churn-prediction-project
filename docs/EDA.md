@@ -21,7 +21,7 @@ Todos os gráficos foram gerados e estão disponíveis na pasta [`outputs/plots/
 
 Clientes com assinatura mensal apresentam taxa de **100% de cancelamento**.
 
-![Assinatura vs Cancelamento](../outputs/plots/assinatura_vs_cancelamento.png)
+![Duração do Contrato vs Cancelamento](../outputs/plots/duracao_contrato.png)
 
 ---
 
